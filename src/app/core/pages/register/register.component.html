@@ -1,0 +1,136 @@
+
+
+<form [formGroup]="registerForm"   (ngSubmit)="register()" class="max-w-md mx-auto">
+
+
+    <h1 class="mb-5 text-xl text-main font-semibold">Register Now  :</h1>
+    @if (apiError) {
+        <div class="flex p-4 mb-4 text-sm mt-2 text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+           <span> {{apiError}}</span>
+        </div>
+       
+    }
+    <div class="relative z-0 w-full mb-5 group">
+        <input type="text"  formControlName="name" name="floating_name" id="floating_name" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-900 appearance-none dark:text-white dark:border-main dark:focus:border-main focus:outline-none focus:ring-0 focus:border-main peer" placeholder=" " required />
+        <label for="floating_name" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-main peer-focus:dark:text-main peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">User Name</label>
+      @if (registerForm.get("name")?.errors && registerForm.get('name')?.touched) {
+        <div class="flex p-4 mb-4 text-sm mt-2 text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+                <ul class="mt-1.5 list-disc list-inside">
+                    @if (registerForm.get("name")?.getError('required')) {
+                        <li>Name is required</li>
+
+                    }@else if (registerForm.get("name")?.getError('minlength')) {
+                        <li>min characters 3</li>
+
+                    }@else if (registerForm.get("name")?.getError('maxlength')) {
+                        <li>max characters is 20</li>
+                    }
+              </ul>
+            
+        </div>
+      }
+    </div>  
+    <div class="relative z-0 w-full mb-5 group">
+        <input type="email"  formControlName="email" name="floating_email" id="floating_email" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-900 appearance-none dark:text-white dark:border-main dark:focus:border-main focus:outline-none focus:ring-0 focus:border-main peer" placeholder=" " required />
+        <label for="floating_email" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-main peer-focus:dark:text-main peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">User Email</label>
+        
+        @if (registerForm.get("email")?.errors && registerForm.get('email')?.touched) {
+            <div class="flex p-4 mb-4 text-sm mt-2 text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+                    <ul class="mt-1.5 list-disc list-inside">
+                        @if (registerForm.get("email")?.getError('required')) {
+                            <li>email is required</li>
+    
+                        }@else if (registerForm.get("email")?.getError('email')) {
+                            <li>invalid email</li>
+    
+                        }
+                  </ul>
+                
+            </div>
+          }
+    </div>
+    <div class="relative z-0 w-full mb-5 group">
+        <input type="password"  formControlName="password" name="floating_password" id="floating_password" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-900 appearance-none dark:text-white dark:border-main dark:focus:border-main focus:outline-none focus:ring-0 focus:border-main peer" placeholder=" " required />
+        <label for="floating_password" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-main peer-focus:dark:text-main peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">User password</label>
+
+        @if (registerForm.get("password")?.errors && registerForm.get('password')?.touched) {
+            <div class="flex p-4 mb-4 text-sm mt-2 text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+                    <ul class="mt-1.5 list-disc list-inside">
+                        @if (registerForm.get("password")?.getError('required')) {
+                            <li>password is required</li>
+    
+                        }@else if (registerForm.get("password")?.getError('pattern')) {
+                            <li>pattern invalid</li>
+    
+                        }
+                  </ul>
+                
+            </div>
+          }
+
+
+
+
+
+
+
+
+    </div>
+    <div class="relative z-0 w-full mb-5 group">
+        <input type="password"  formControlName="rePassword" name="floating_rePassword" id="floating_rePassword" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-900 appearance-none dark:text-white dark:border-main dark:focus:border-main focus:outline-none focus:ring-0 focus:border-main peer" placeholder=" " required />
+        <label for="floating_rePassword" class="peer-focus:font-medium absolute text-sm text-gray-500  dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-main peer-focus:dark:text-main peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">re-password</label>
+
+        @if (registerForm.get('rePassword')?.touched &&(registerForm.get("rePassword")?.errors || registerForm.getError('mismatch')) ) {
+            <div class="flex p-4 mb-4 text-sm mt-2 text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+                    <ul class="mt-1.5 list-disc list-inside">
+                        @if (registerForm.get("rePassword")?.getError('required')) {
+                            <li>repassword is required</li>
+    
+                        }@else if (registerForm.get("rePassword")?.getError('mismatch')) {
+                            <li>password and repassword shoud match</li>
+    
+                        }
+                  </ul>
+                
+            </div>
+          }
+
+
+
+
+    </div>
+    <div class="relative z-0 w-full mb-5 group">
+        <input type="tel"  formControlName="phone" name="floating_phone" id="floating_phone" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-900 appearance-none dark:text-white dark:border-main dark:focus:border-main focus:outline-none focus:ring-0 focus:border-main peer" placeholder=" " required />
+        <label for="floating_phone" class="peer-focus:font-medium absolute text-sm  text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-main peer-focus:dark:text-main peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Phone</label>
+
+        @if (registerForm.get("phone")?.errors && registerForm.get('phone')?.touched) {
+            <div class="flex p-4 mb-4 text-sm mt-2 text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+                    <ul class="mt-1.5 list-disc list-inside">
+                        @if (registerForm.get("phone")?.getError('required')) {
+                            <li>phone is required</li>
+    
+                        }@else if (registerForm.get("phone")?.getError('pattern')) {
+                            <li>pattern invalid</li>
+    
+                        }
+                  </ul>
+                
+            </div>
+          }
+
+    </div>
+
+ 
+
+    
+    <button type="submit" class="text-white bg-main hover:bg-main focus:ring-4 focus:outline-none focus:ring-main font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-main dark:hover:bg-main dark:focus:ring-main mb-6 ">
+        
+       @if (IsCallingApi) {
+        <i class="fa fa-spin fa-spinner"></i>
+       }
+         submit
+       
+        
+       </button>
+  </form>
+  

@@ -1,0 +1,27 @@
+<div class="container">
+<div class="p-4">
+    <h1 class="text-center text-main font-bold text-4xl mb-10">ALL Brands</h1>
+</div>
+
+<div class="card grid  lg:grid-cols-4 gap-6 rounded-lg  mb-7 transition ease-in-out delay-100 ">
+
+@for (item of brands ; track $index) {
+
+<div class="border border-gray   duration-300   shadow-lg  hover:shadow-main">
+    <div class="card-img">
+        <img [src]="item.image" alt="">
+    </div>
+
+
+    <div class="card-text p-4 font-medium">
+        <p class="text-center">{{item.name}}</p>
+    </div>
+    
+</div>
+
+}
+
+</div>
+
+
+</div>

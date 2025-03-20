@@ -1,0 +1,75 @@
+
+ <form [formGroup]="LoginForm"   (ngSubmit)="Login()" class="max-w-md mx-auto">
+   
+   <h1 class="mb-5 text-xl text-main font-semibold">Login Now :</h1>
+    <div class="relative z-0 w-full mb-5 group">
+        <input type="email"  formControlName="email" name="floating_email" id="floating_email" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-900 appearance-none dark:text-white dark:border-main dark:focus:border-main focus:outline-none focus:ring-0 focus:border-main peer" placeholder=" " required />
+        <label for="floating_email" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-main peer-focus:dark:text-main peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">User Email</label>
+        
+        @if (LoginForm.get("email")?.errors && LoginForm.get('email')?.touched) {
+            <div class="flex p-4 mb-4 text-sm mt-2 text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+                    <ul class="mt-1.5 list-disc list-inside">
+                        @if (LoginForm.get("email")?.getError('required')) {
+                            <li>email is required</li>
+    
+                        }@else if (LoginForm.get("email")?.getError('email')) {
+                            <li>invalid email</li>
+    
+                        }
+                  </ul>
+                
+            </div>
+          }
+    </div>
+    <div class="relative z-0 w-full mb-7 group">
+        <input [type]="!toggleInput? 'password':'text'"  formControlName="password" name="floating_password" id="floating_password" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-900 appearance-none dark:text-white dark:border-main dark:focus:border-main focus:outline-none focus:ring-0 focus:border-main peer" placeholder=" " required />
+        <label for="floating_password" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-main peer-focus:dark:text-main peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">User password</label>
+
+
+
+<span (click)="togglepass()" class="absolute top-[20%]  right-0  cursor-pointer">
+   
+@if(!toggleInput){
+    <i class="fa-solid fa-eye-slash"></i>
+}@else {
+    <i class="fa fa-eye"></i>
+}
+</span>
+
+
+        @if (LoginForm.get("password")?.errors && LoginForm.get('password')?.touched) {
+            <div class="flex p-4 mb-4 text-sm mt-2 text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+                    <ul class="mt-1.5 list-disc list-inside">
+                        @if (LoginForm.get("password")?.getError('required')) {
+                            <li>password is required</li>
+    
+                        }@else if (LoginForm.get("password")?.getError('pattern')) {
+                            <li>pattern invalid</li>
+    
+                        }
+                  </ul>
+                
+            </div>
+          }
+
+    </div>
+   
+  <div class="flex items-center  justify-between">
+
+    <button type="submit" class="text-white bg-main hover:bg-main focus:ring-4 focus:outline-none focus:ring-main font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-main dark:hover:bg-main dark:focus:ring-main mb-6 ">
+        
+        @if (IsCallingApi) {
+         <i class="fa fa-spin fa-spinner"></i>
+        }
+        Login
+        </button>
+
+        <a routerLink="/forgetpassword" class="text-slate-700 text-sm font-medium ">ForgetPassword?</a>
+  
+
+
+  </div>
+  
+
+  </form> 
+  
